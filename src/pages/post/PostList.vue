@@ -16,7 +16,7 @@
         </v-form>
     </v-card-title>
     <v-container>
-        <v-data-table :headers="headers" :items="showList">
+        <v-data-table :headers="headerList" :items="showList">
             <template v-slot:[`item.title`]="{ item }">
                 <a v-if="item.title">{{item.title}}</a>
             </template>

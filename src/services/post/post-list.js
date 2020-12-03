@@ -1,4 +1,4 @@
-import { mapGetters } from "vuex";
+//import { mapGetters } from "vuex";
 export default {
     data() {
         return {
@@ -22,10 +22,14 @@ export default {
                 },
                 {
                     text: "Posted User",
-                    value: "create_user_id",
+                    value: "user.name",
                 },
                 {
-                    text: "Operation",
+                    text: "Posted Date",
+                    value: "created_at",
+                },
+                {
+                    text: "",
                     value: "operation",
                 },
             ],
@@ -34,14 +38,14 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["isLoggedIn"]),
-        headers() {
-            if (!this.isLoggedIn) {
-                return this.headerList.slice(0, this.headerList.length - 1);
-            } else {
-                return this.headerList;
-            }
-        },
+        // ...mapGetters(["isLoggedIn"]),
+        // headers() {
+        //     if (!this.isLoggedIn) {
+        //         return this.headerList.slice(0, this.headerList.length - 1);
+        //     } else {
+        //         return this.headerList;
+        //     }
+        // },
     },
     mounted() {
         this.$axios

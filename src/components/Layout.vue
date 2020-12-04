@@ -9,9 +9,9 @@
             </v-toolbar-title>
 
             <v-layout align-center>
-                  <v-btn flat small color="info" class="ml-3" @click="showUserList">Users</v-btn>
-                  <v-btn flat small color="info" class="ml-3">User</v-btn>
-                  <v-btn flat small color="info" class="ml-3" @click="showPostList">Posts</v-btn>
+                  <v-btn text color="normal" class="ml-10" @click="showUserList">Users</v-btn>
+                  <v-btn text color="normal">User</v-btn>
+                  <v-btn text color="normal" @click="showPostList">Posts</v-btn>
             </v-layout>
 
             <div class="route-links"></div>

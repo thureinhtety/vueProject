@@ -4,6 +4,8 @@ import VueRouter from "vue-router";
 import Login from "../pages/user/Login";
 import PostList from "../pages/post/PostList";
 import UserList from "../pages/user/UserList";
+import PostCreate from  "../pages/post/PostCreate";
+import PostCreateConfirm from "../pages/post/PostCreateConfirm";
 //import store from "../store";
 
 Vue.use(VueRouter);
@@ -18,6 +20,16 @@ const routes = [
         path: "/post/list",
         name: "post-list",
         component: PostList,
+    },
+    {
+        path: "/post/create",
+        name: "post-create",
+        component: PostCreate,
+    },
+    {
+        path: "/post/createConfirm",
+        name: "post-createConfirm",
+        component: PostCreateConfirm,
     },
     {
         path: "/user/list",

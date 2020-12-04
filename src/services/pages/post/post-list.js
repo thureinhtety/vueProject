@@ -1,5 +1,6 @@
 //import { mapGetters } from "vuex";
 export default {
+    name : "PostList",
     data() {
         return {
             postInfo: null,
@@ -72,5 +73,12 @@ export default {
                 );
             });
         },
+    
+        /**
+         * This is to route post create page.
+         */
+        showCreatePost() {
+            this.$router.push({ name: "post-create" });
+        }
     },
 };

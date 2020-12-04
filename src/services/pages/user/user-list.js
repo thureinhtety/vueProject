@@ -9,6 +9,7 @@ export default {
                 },
                 {
                     text: "Name",
+                    width: '110px',
                     value: "name",
                 },
                 {
@@ -17,7 +18,12 @@ export default {
                 },
                 {
                     text: "Created User",
+                    width: '110px',
                     value: "user.name",
+                },
+                {
+                    text: "Type",
+                    value: "type",
                 },
                 {
                     text: "Phone",
@@ -25,6 +31,7 @@ export default {
                 },
                 {
                     text: "Birth Date",
+                    width: '110px',
                     value: "dob",
                 },
                 {
@@ -46,6 +53,10 @@ export default {
             ],
             userList: [],
             showList: [],
+            created_from: new Date().toISOString().substr(0, 10),
+            created_to: new Date().toISOString().substr(0, 10),
+            menu1: false,
+            menu2: false,
         };
     },
     mounted() {

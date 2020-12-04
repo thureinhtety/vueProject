@@ -9,7 +9,7 @@
                     <v-text-field label="Search keyword" hide-details="auto"></v-text-field>
                 </v-col>
                 <v-btn class="post-list-btn mr-4" color="primary">Filter</v-btn>
-                <v-btn class="post-list-btn mr-4" color="primary">Create</v-btn>
+                <v-btn class="post-list-btn mr-4" color="primary" @click="showCreatePost">Create</v-btn>
                 <v-btn class="post-list-btn mr-4" color="primary">Upload</v-btn>
                 <v-btn class="post-list-btn mr-4" color="primary">Download</v-btn>
             </v-row>
@@ -35,7 +35,7 @@
 </v-card>
 </template>
 
-<script src="../../services/post/post-list.js">
+<script src="../../services/pages/post/post-list.js">
 </script>
 
 <style scoped src="../../assets/css/pages/post/post-list.css">

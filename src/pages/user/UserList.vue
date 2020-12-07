@@ -32,7 +32,12 @@
                 ></v-text-field>
               </template>
               <v-date-picker v-model="created_from" no-title scrollable>
-                <v-btn text color="primary" @click="$refs.menu1.save(created_from)">OK</v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.menu1.save(created_from)"
+                  >OK</v-btn
+                >
               </v-date-picker>
             </v-menu>
           </v-col>
@@ -57,7 +62,12 @@
                 ></v-text-field>
               </template>
               <v-date-picker v-model="created_to" no-title scrollable>
-                <v-btn text color="primary" @click="$refs.menu2.save(created_to)">OK</v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.menu2.save(created_to)"
+                  >OK</v-btn
+                >
               </v-date-picker>
             </v-menu>
           </v-col>
@@ -69,7 +79,7 @@
     <v-container>
       <v-data-table :headers="headerList" :items="showList">
         <template v-slot:[`item.name`]="{ item }">
-          <a v-if="item.name">{{ item.name }}</a>
+          <a v-if="item.name" @click="userDetail(item)">{{ item.name }}</a>
         </template>
         <template v-slot:[`item.type`]="{ item }">
           {{ item.type == 0 ? "Admin" : "User" }}
@@ -83,6 +93,26 @@
         </template>
       </v-data-table>
     </v-container>
+    <v-dialog v-model="dialog" width="500">
+      <v-card>
+        <v-card-title>User Detail</v-card-title>
+        <img class="ml-5 mb-5" :src="'http://localhost:8000' + detail.profile" width="100" height="100"/>
+        <v-card-text>Name : {{ detail.name }}</v-card-text>
+        <v-card-text>Email : {{ detail.email }}</v-card-text>
+        <v-card-text>Type : {{ detail.type === 0 ? "Admin" : "User" }}</v-card-text>
+        <v-card-text>Phone : {{ detail.phone }}</v-card-text>
+        <v-card-text>Address : {{ detail.address }}</v-card-text>
+        <v-card-text>Date of Birth : {{ detail.dob }}</v-card-text>
+        <v-card-text>Created At : {{ detail.created_at }}</v-card-text>
+        <v-card-text>Created User : {{ detail.user ? detail.user.name : "" }}</v-card-text>
+        <v-card-text>Updated At : {{ detail.updated_at }}</v-card-text>
+        <v-card-text>Updated User : {{ detail.user ? detail.user.name : "" }}</v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-btn @click="dialog = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-card>
 </template>
 

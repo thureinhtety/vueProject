@@ -1,6 +1,6 @@
 //import { mapGetters } from "vuex";
 export default {
-    name : "PostList",
+    name: "PostList",
     data() {
         return {
             postInfo: null,
@@ -34,8 +34,10 @@ export default {
                     value: "operation",
                 },
             ],
+            updateData: [],
             postList: [],
             showList: [],
+            detail: [],
         };
     },
     computed: {
@@ -48,7 +50,7 @@ export default {
         //     }
         // },
     },
-    mounted() {
+    created() {
         this.$axios
             .get("/post/list")
             .then((response) => {
@@ -64,21 +66,31 @@ export default {
          * This is to filter posts of datatable.
          * @returns void
          */
-        filterPosts() {
-            this.showList = this.postList.filter((post) => {
-                return (
-                    post.title.includes(this.keyword) ||
-                    post.description.includes(this.keyword) ||
-                    post.create_user_id.includes(this.keyword)
-                );
-            });
-        },
-    
+        // filterPosts() {
+        //     this.showList = this.postList.filter((post) => {
+        //         return (
+        //             post.title.includes(this.keyword) ||
+        //             post.description.includes(this.keyword) ||
+        //             post.create_user_id.includes(this.keyword)
+        //         );
+        //     });
+        // },
+
         /**
          * This is to route post create page.
          */
         showCreatePost() {
             this.$router.push({ name: "post-create" });
+        },
+
+        showUpdatePost(data) {
+            this.updateData = data,
+            this.$router.push({ name: "post-update", params: { data: this.updateData } });
+        },
+
+        postDetail(detail) {
+            this.dialog = true
+            this.detail = detail
         }
     },
 };

@@ -18,12 +18,12 @@
     <v-container>
         <v-data-table :headers="headerList" :items="showList">
             <template v-slot:[`item.title`]="{ item }">
-                <a v-if="item.title">{{item.title}}</a>
+                <a @click="postDetail(item)" v-if="item.title">{{item.title}}</a>
             </template>
-            <template v-slot:[`item.operation`]>
+            <template v-slot:[`item.operation`]="{ item }">
                 <v-row>
                     <div class="operation-btn">
-                        <v-btn color="primary" class="post-list-btn">Edit</v-btn>
+                        <v-btn @click="showUpdatePost(item)" color="primary" class="post-list-btn">Edit</v-btn>
                     </div>
                     <div class="operation-btn">
                         <v-btn color="error" class="post-list-btn">Delete</v-btn>
@@ -32,6 +32,22 @@
             </template>
         </v-data-table>
     </v-container>
+    <v-dialog v-model="dialog" width="500">
+        <v-card>
+        <v-card-title>Post Detail</v-card-title>
+        <v-card-text>Title : {{ detail.title }}</v-card-text>
+        <v-card-text>Description : {{ detail.description }}</v-card-text>
+        <v-card-text>Status : {{ detail.status }}</v-card-text>
+        <v-card-text>Created At : {{ detail.created_at }}</v-card-text>
+        <v-card-text>Created User : {{ detail.user ? detail.user.name : "" }}</v-card-text>
+        <v-card-text>Updated At : {{ detail.updated_at }}</v-card-text>
+        <v-card-text>Updated User : {{ detail.user ? detail.user.name : "" }}</v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+            <v-btn @click="dialog = false">Close</v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
 </v-card>
 </template>
 

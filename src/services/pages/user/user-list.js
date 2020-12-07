@@ -2,6 +2,7 @@ export default {
     name:"UserList",
     data(){
         return{
+            dialog: false,
             headerList: [
                 {
                     text: "ID",
@@ -53,6 +54,7 @@ export default {
             ],
             userList: [],
             showList: [],
+            detail: [],
             created_from: new Date().toISOString().substr(0, 10),
             created_to: new Date().toISOString().substr(0, 10),
             menu1: false,
@@ -69,5 +71,11 @@ export default {
             .catch((err) => {
                 console.log(err);
             });
-    }
+    },
+    methods: {
+        userDetail(detail) {
+            this.dialog = true
+            this.detail = detail
+        }
+    },
 }

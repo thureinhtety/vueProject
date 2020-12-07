@@ -6,6 +6,8 @@ import PostList from "../pages/post/PostList";
 import UserList from "../pages/user/UserList";
 import PostCreate from  "../pages/post/PostCreate";
 import PostCreateConfirm from "../pages/post/PostCreateConfirm";
+import PostUpdate from "../pages/post/PostUpdate";
+import PostUpdateConfirm from "../pages/post/PostUpdateConfirm";
 //import store from "../store";
 
 Vue.use(VueRouter);
@@ -30,6 +32,16 @@ const routes = [
         path: "/post/createConfirm",
         name: "post-createConfirm",
         component: PostCreateConfirm,
+    },
+    {
+        path: "/post/update",
+        name: "post-update",
+        component: PostUpdate,
+    },
+    {
+        path: "/post/updateConfirm",
+        name: "post-updateConfirm",
+        component: PostUpdateConfirm,
     },
     {
         path: "/user/list",

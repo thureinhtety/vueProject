@@ -72,7 +72,7 @@
             </v-menu>
           </v-col>
           <v-btn class="post-list-btn mr-4" color="primary">Filter</v-btn>
-          <v-btn class="post-list-btn mr-4" color="primary">Create</v-btn>
+          <v-btn @click="showCreateUser" class="post-list-btn mr-4" color="primary">Create</v-btn>
         </v-row>
       </v-form>
     </v-card-title>
@@ -84,10 +84,13 @@
         <template v-slot:[`item.type`]="{ item }">
           {{ item.type == 0 ? "Admin" : "User" }}
         </template>
-        <template v-slot:[`item.operation`]>
+        <template v-slot:[`item.operation`]="{ item }">
           <v-row>
             <div class="operation-btn">
-              <v-btn color="error" class="post-list-btn">Delete</v-btn>
+              <v-btn @click="showUpdateUser(item)" color="primary" class="post-list-btn">Edit</v-btn>
+            </div>
+            <div class="operation-btn">
+              <v-btn @click="deleteUser(item)" color="error" class="post-list-btn">Delete</v-btn>
             </div>
           </v-row>
         </template>
@@ -96,7 +99,7 @@
     <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-title>User Detail</v-card-title>
-        <img class="ml-5 mb-5" :src="'http://localhost:8000' + detail.profile" width="100" height="100"/>
+        <img class="ml-5 mb-5" :src="VUE_IMG_URL + detail.profile" width="100" height="100"/>
         <v-card-text>Name : {{ detail.name }}</v-card-text>
         <v-card-text>Email : {{ detail.email }}</v-card-text>
         <v-card-text>Type : {{ detail.type === 0 ? "Admin" : "User" }}</v-card-text>

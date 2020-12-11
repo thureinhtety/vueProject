@@ -2,6 +2,7 @@ export default {
     name:"UserList",
     data(){
         return{
+            VUE_IMG_URL:'http://localhost:8000',
             dialog: false,
             headerList: [
                 {
@@ -49,11 +50,13 @@ export default {
                 },
                 {
                     text: "",
+                    width: '200px',
                     value: "operation",
                 },
             ],
             userList: [],
             showList: [],
+            updateData: [],
             detail: [],
             created_from: new Date().toISOString().substr(0, 10),
             created_to: new Date().toISOString().substr(0, 10),
@@ -76,6 +79,20 @@ export default {
         userDetail(detail) {
             this.dialog = true
             this.detail = detail
+        },
+        showCreateUser() {
+            this.$router.push({ name: "user-create" })
+        },
+        showUpdateUser(data) {
+            this.updateData = data
+            this.$router.push({ name: "user-update", params: { data: this.updateData } });
+        },
+        deleteUser(data) {
+            if (!confirm("Are you sure to delete?")) {
+                return;
+            }
+            this.$axios
+                .delete(`/user/${data.id}`)
         }
     },
 }

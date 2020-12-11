@@ -10,7 +10,7 @@
 
             <v-layout align-center>
                   <v-btn text color="normal" class="ml-10" @click="showUserList">Users</v-btn>
-                  <v-btn text color="normal">User</v-btn>
+                  <v-btn text color="normal" @click="userProfile(4)">User</v-btn>
                   <v-btn text color="normal" @click="showPostList">Posts</v-btn>
             </v-layout>
 

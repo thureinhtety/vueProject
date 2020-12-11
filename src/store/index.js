@@ -18,12 +18,12 @@ export default new Vuex.Store({
     },
     actions: {
         login({ commit }, credentials) {
-            return axios.post("/auth/login", credentials).then(({ data }) => {
+            return this.$axios.post("/login", credentials).then(({ data }) => {
                 commit("setUserData", data);
             });
         },
         logout({ commit }, credentials) {
-            return axios.post("/auth/logout", credentials).then(() => {
+            return this.$axios.post("/logout", credentials).then(() => {
                 commit("setUserData", null);
             });
         },

@@ -25,18 +25,18 @@ new Vue({
      * @returns Resquest with configurations
      */
     created() {
-        axios.interceptors.request.use(
-            function (config) {
-                if (store.state.user) {
-                    const tokenType = store.state.user.data.token_type;
-                    const token = store.state.user.data.access_token;
-                    if (token) config.headers.Authorization = `${tokenType} ${token}`;
-                }
-                return config;
-            },
-            function (error) {
-                return Promise.reject(error);
-            }
-        );
+        // axios.interceptors.request.use(
+        //     function (config) {
+        //         if (store.state.user) {
+        //             const tokenType = store.state.user.data.token_type;
+        //             const token = store.state.user.data.access_token;
+        //             if (token) config.headers.Authorization = `${tokenType} ${token}`;
+        //         }
+        //         return config;
+        //     },
+        //     function (error) {
+        //         return Promise.reject(error);
+        //     }
+        // );
     },
 }).$mount("#app");

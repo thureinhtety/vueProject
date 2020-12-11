@@ -19,8 +19,8 @@ export default {
         }
     },
     created() {
-        this.post.title = this.$route.params.data.title
-        this.post.description = this.$route.params.data.description
+        // this.post.title = this.$route.params.data.title
+        // this.post.description = this.$route.params.data.description
     },
     methods: {
         showCreateConfirmPost() {

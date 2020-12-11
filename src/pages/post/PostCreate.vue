@@ -17,9 +17,7 @@
           :rules="desRule"
         ></v-textarea>
 
-      <v-btn :disabled="!valid" @click="showCreateConfirmPost" class="mr-5"
-        >confirm</v-btn
-      >
+      <v-btn :disabled="!valid" @click="showCreateConfirmPost" class="mr-5">confirm</v-btn>
       <v-btn @click="clear">clear</v-btn>
     </v-form>
   </v-card>

@@ -52,14 +52,14 @@ export default {
     },
     created() {
         this.$axios
-            .get("/post/list")
-            .then((response) => {
-                this.postList = response.data;
-                this.showList = this.postList;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                .get("/post/list")
+                .then((response) => {
+                    this.postList = response.data;
+                    this.showList = this.postList;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
     },
     methods: {
         /**
@@ -84,13 +84,21 @@ export default {
         },
 
         showUpdatePost(data) {
-            this.updateData = data,
+            this.updateData = data
             this.$router.push({ name: "post-update", params: { data: this.updateData } });
         },
 
         postDetail(detail) {
             this.dialog = true
             this.detail = detail
+        },
+
+        deletePost(data) {
+            if (!confirm("Are you sure to delete?")) {
+                return;
+            }
+            this.$axios
+                .delete(`/post/${data.id}`)
         }
     },
 };

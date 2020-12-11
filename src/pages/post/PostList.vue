@@ -26,7 +26,7 @@
                         <v-btn @click="showUpdatePost(item)" color="primary" class="post-list-btn">Edit</v-btn>
                     </div>
                     <div class="operation-btn">
-                        <v-btn color="error" class="post-list-btn">Delete</v-btn>
+                        <v-btn color="error" @click="deletePost(item)" class="post-list-btn">Delete</v-btn>
                     </div>
                 </v-row>
             </template>

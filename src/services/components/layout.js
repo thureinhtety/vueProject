@@ -1,14 +1,23 @@
-import { mapGetters } from "vuex";
+//import { mapGetters } from "vuex";
 import constants from "../../constants";
 
 export default {
     data() {
         return {
             title: constants.APP_TITLE,
+            detail: {
+                name: '',
+                email: '',
+                type: '',
+                phone: '',
+                dob: '',
+                address: '',
+                profile: ''
+            }
         };
     },
     computed: {
-        ...mapGetters(["isLoggedIn", "userType", "userName"]),
+    //    ...mapGetters(["isLoggedIn", "userType", "userName"]),
     },
     methods: {
         /**
@@ -45,6 +54,18 @@ export default {
          */
         showPostList() {
             this.$router.push({ name: "post-list" });
+        },
+
+        /**
+         * This is to route user-profile
+         */
+        userProfile(id) {
+            this.$axios
+                .get(`/user/${id}`)
+                .then((response) => {
+                    this.detail = response.data
+                    this.$router.push({ name: "user-profile", params: { data: this.detail } });
+                })
         }
     },
 };
